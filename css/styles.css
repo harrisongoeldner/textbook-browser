@@ -1,0 +1,313 @@
+:root {
+    color-scheme: light dark;
+
+    --bg-body: #ffffff;
+    --bg-secondary: #f3f5f9;
+    --text: #000000;
+    --text-muted: #6a6a6a;
+    --border-color: #e5e7eb;
+    --box-shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* --- Change Font Defaults --- */
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text);
+}
+
+h1 {
+    font-weight: 700;
+    font-family: "Roboto Slab", sans-serif;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+/* --- Site Header --- */
+
+header {
+    background-color: var(--bg-secondary);
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+}
+
+.site-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-icon {
+    height: 40px;
+    width: auto;
+    position: relative;
+    margin-right: 5px;
+    top: -4px;
+}
+
+.accent-text {
+    color: rgb(21, 82, 204);
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    list-style: none;
+    padding: 0;
+    margin: .5rem 0 0;
+}
+
+nav a {
+    display: inline-block;
+    transition: transform 120ms ease, border-color 120ms ease;
+    text-decoration: none;
+    padding: .25rem .5rem;
+    border: 1px solid #9995;
+    border-radius: .5rem;
+}
+
+/* --- Site footer --- */
+
+
+footer {
+    background-color: var(--bg-secondary);
+    padding: 0.5rem;
+    border: 2px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+footer p {
+    margin-bottom: 0.4rem;
+}
+
+footer div p:nth-of-type(2) {
+    color: #6a6a6a;
+    font-size: 0.9rem;
+}
+
+/* --- index.html specific --- */
+
+#page-title p {
+    color: #6a6a6a;
+}
+
+#about {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    margin: 3rem 0;
+}
+
+/* --- Gallery Layout --- */
+
+#gallery h3 {
+    margin-top: 2rem;
+}
+
+.image-wrapper {
+    position: relative; 
+    overflow: hidden;
+    border-radius: 12px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px var(--box-shadow);
+}
+
+.book-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.book-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.6);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    opacity: 0;
+    transition: opacity ease 0.3s;
+}
+
+.see-more-btn {
+    color: white;
+    background-color: rgb(21, 82, 204);
+    text-decoration: none;
+    border-radius: 21px;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.see-more-btn::after {
+    content: ">";
+    font-weight: bold;
+    margin-left: 8px;
+    display: inline-block; /* needed for wiggle animation */
+}
+
+/* See more button slide up keyframes */
+
+@keyframes SlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+/* Arrow wiggle keyframes */
+
+@keyframes wiggle {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px) }
+}
+
+/* Image jump on hover transition */
+
+.book-card:hover .image-wrapper,
+.book-card:focus-within .image-wrapper {
+    transform: translateY(-5px); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Overlay opacity transition */
+.book-card:hover .book-overlay,
+.book-card:focus-within .book-overlay {
+    opacity: 1;
+}
+
+/* See more button animation */
+
+.book-card:hover .see-more-btn,
+.book-card:focus-within .see-more-btn {
+    animation: SlideUp 400ms;
+}
+
+/* Arrow wiggle animation */
+
+.see-more-btn:hover::after,
+.see-more-btn:focus-within::after {
+    animation: wiggle 600ms ease-in-out forwards;
+}
+
+.book-caption {
+    margin: 10px;
+}
+
+.book-title {
+    font-weight: bold;
+}
+
+.book-author-cat {
+    font-size: 14px;
+    color: #6a6a6a;
+}
+
+/* --- Book Details Pages --- */
+
+#book-title {
+    font-size: 1.7rem;
+    font-weight: bold;
+}
+
+#book-tags {
+    font-size: 1.1rem;
+}
+
+.back-btn {
+    display: inline-block;
+    color: white;
+    background-color: rgb(21, 82, 204);
+    text-decoration: none;
+    border-radius: 21px;
+    padding: 10px 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.back-btn::before{
+    content: "<";
+    font-weight: bold;
+    margin-right: 8px;
+    display: inline-block; /* needed for wiggle animation */
+
+}
+
+.book-details h4 {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.book-info h4 {
+    font-size: 1.2rem;
+}
+
+.rating {
+    position: relative;
+    display: inline-block;
+}
+
+.rating::before {
+    content: "★★★★★";
+    color: grey;
+}
+
+.rating::after {
+    content: "★★★★★";
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    color: gold;
+    width: var(--rating, 0%)
+}
+
+/* --- Accessibility -- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+
+    .see-more-btn {
+        opacity: 1;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-body: #121212;       
+        --bg-secondary: #1e1e1e;  
+        --text: #e0e0e0;     
+        --text-muted: #a0a0a0;
+        --border-color: #333333;
+        --card-shadow: rgba(0, 0, 0, 0.5); 
+    }
+}
